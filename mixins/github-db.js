@@ -532,6 +532,9 @@ function parseDate(string) {
 }
 
 function encodeDate(date) {
+  if (date instanceof Date) {
+    return date.toISOString();
+  }
   var seconds = date.seconds - (date.offset) * 60;
   var d = new Date(seconds * 1000);
   var string = d.toISOString();
